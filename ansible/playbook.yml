@@ -1,0 +1,41 @@
+---
+- hosts: ansible-control.hl.local
+  become: true
+  tasks:
+    - name: Generate /root/.ssh/id_rsa RSA host key without passphrase
+      command: ssh-keygen -t rsa -f /root/.ssh/id_rsa -q -P ""
+    - name: Get id_rsa.pub from root
+      fetch:
+        src: /root/.ssh/id_rsa.pub
+        dest: ./authorized_keys.j2
+        flat: true
+
+- hosts: all:!ansible-control.hl.local
+  become: true
+  tasks:
+    - name: Create directory /root/.ssh
+      file:
+        path: /root/.ssh
+        state: directory
+        owner: root
+        group: root
+        mode: 0700
+    - name: Copy /root/.ssh/id_rsa got from control node and paste as authorized_keys.j2
+      copy:
+        src: ./authorized_keys.j2
+        dest: /root/.ssh/authorized_keys
+        owner: root
+        group: root
+        mode: 0644
+
+- hosts: all
+  become: true
+  tasks:
+    - name: Mapping of the hostnames to IP addresses
+      template:
+        src: templates/hosts.j2
+        dest: /etc/hosts
+        owner: root
+        group: root
+        mode: 0644
+...

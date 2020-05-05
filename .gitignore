@@ -1,0 +1,2 @@
+ansible/authorized_keys.j2
+.vagrant

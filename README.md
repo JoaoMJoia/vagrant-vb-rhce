@@ -23,10 +23,12 @@ Tested on [Linux Mint](https://linuxmint.com/).
 Before you begin, ensure you have met the following requirements:
 
 * 15 GB of space
+* Minimum 3 GB RAM
 * Access to internet
 * Virtual Box installed  ( https://www.virtualbox.org/wiki/Downloads )
 * Vagrant binary installed  ( https://www.vagrantup.com/docs/installation/ )
 * Ansible installed ( https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html )
+* ```sshpass``` package on linux machine installed
 * An account on Red Hat to register the virtual machines.
 
 ---

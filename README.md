@@ -12,6 +12,8 @@ All the virtual machines are registered in the [Red Hat](https://www.redhat.com)
 
 The control node have a root [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) key without pass phrase shared on the managed nodes.
 
+The deployment of the infrastructure it takes more or less twenty minutes.
+
 The  ```vagrant_destroy.sh``` unregister and destroy the infrastructure.
 
 Tested on [Linux Mint](https://linuxmint.com/).

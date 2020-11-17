@@ -16,7 +16,7 @@ The deployment of the infrastructure it takes more or less twenty minutes.
 
 The  ```vagrant_destroy.sh``` unregister and destroy the infrastructure.
 
-Tested on [Linux Mint](https://linuxmint.com/).
+Tested on [Linux Mint](https://linuxmint.com/) and MacOS.
 
 ---
 
@@ -30,7 +30,13 @@ Before you begin, ensure you have met the following requirements:
 * Virtual Box installed  ( https://www.virtualbox.org/wiki/Downloads )
 * Vagrant binary installed  ( https://www.vagrantup.com/docs/installation/ )
 * Ansible installed ( https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html )
-* ```sshpass``` package on linux machine installed
+* ```sshpass``` package on Linux or MacOS machine installed
+  * For MacOS ```sshpass``` installation:
+    * Download the [Source Code] ( https://sourceforge.net/projects/sshpass/ )
+    * Extract it and cd into the directory
+    * ./configure
+    * sudo make install
+
 * An account on Red Hat to register the virtual machines.
 
 ---

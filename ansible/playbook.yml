@@ -9,9 +9,15 @@
         src: /root/.ssh/id_rsa.pub
         dest: ./authorized_keys.j2
         flat: true
+    - name: Enable ansible-2.8
+      shell: > 
+        set -o pipefail && \ 
+          subscription-manager repos --enable ansible-2.8-for-rhel-8-x86_64-rpms
 
 - hosts: all:!ansible-control.hl.local
   become: true
+  vars:
+    #root_password: <password>
   tasks:
     - name: Create directory /root/.ssh
       file:
@@ -27,6 +33,21 @@
         owner: root
         group: root
         mode: 0644
+    - name: Root password
+      user:
+        name: root
+        password: "{{ root_password  | default('lovely') | password_hash('sha512') }}"
+    - name: Set PasswordAuthentication yes
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^[#]*PasswordAuthentication.*$'
+        line: 'PasswordAuthentication yes'
+      notify: restart sshd
+  handlers:
+    - name: restart sshd
+      systemd:
+        name: sshd
+        state: restarted
 
 - hosts: all
   become: true

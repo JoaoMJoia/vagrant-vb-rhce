@@ -1,11 +1,11 @@
 [control]
-ansible-control.hl.local	ansible_host=192.168.80.11
+ansible-control.hl.local	ansible_host=192.168.80.11 ansible_fqdn=ansible-control.hl.local ansible_hostname=ansible-control
 
 [managed]
-ansible2.hl.local	ansible_host=192.168.80.12
-ansible3.hl.local	ansible_host=192.168.80.13
-ansible4.hl.local	ansible_host=192.168.80.14
-ansible5.hl.local	ansible_host=192.168.80.15
+ansible2.hl.local	ansible_host=192.168.80.12 ansible_fqdn=ansible2.hl.local ansible_hostname=ansible2
+ansible3.hl.local	ansible_host=192.168.80.13 ansible_fqdn=ansible3.hl.local ansible_hostname=ansible3
+ansible4.hl.local	ansible_host=192.168.80.14 ansible_fqdn=ansible4.hl.local ansible_hostname=ansible4
+ansible5.hl.local	ansible_host=192.168.80.15 ansible_fqdn=ansible5.hl.local ansible_hostname=ansible5
 
 [all:vars]
 ansible_connection=ssh 

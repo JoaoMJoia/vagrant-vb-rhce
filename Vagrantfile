@@ -31,7 +31,6 @@ Vagrant.configure("2") do |config|
           "--cpus", cpus.to_s
         ]
       end
-
  config.vm.provision "shell", path: "files/script.sh"
 
       # Provision both VMs using Ansible after the last VM is booted.

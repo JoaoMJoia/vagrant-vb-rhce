@@ -10,11 +10,12 @@ That infrastructure have five ```RHEL 8```  virtual machines using [generic](htt
 
 All the virtual machines are registered in the [Red Hat](https://www.redhat.com) account and has the mapping of the hostnames to IP addresses on the ```/etc/hosts```.
 
-The control node have a root [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) key without pass phrase shared on the managed nodes.
+The control node have a root [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) key without pass phrase shared on the managed nodes. 
+It is possible to use root with password ( default: lovely ) or changing variable `root_password`.
 
 The deployment of the infrastructure it takes more or less twenty minutes.
 
-The  ```vagrant_destroy.sh``` unregister and destroy the infrastructure.
+The  ```vagrant_destroy.sh``` unregister on RedHat and destroy the infrastructure on the VirtualBox.
 
 Tested on [Linux Mint](https://linuxmint.com/) and MacOS.
 
@@ -36,6 +37,9 @@ Before you begin, ensure you have met the following requirements:
     * Extract it and cd into the directory
     * ./configure
     * sudo make install
+* ```passlib``` package on Linux or MacOS machine installed
+  * For MacOS ```passlib``` installation:
+    * sudo pip install passlib
 
 * An account on Red Hat to register the virtual machines.
 
@@ -49,11 +53,19 @@ Add your Red Hat account:
 ```
 subscription-manager register --username=******** --password='********'
 ```
+
 Point to your vagrant insecure private key
 
 * vagrant_destroy.sh
 ```
 -o IdentityFile=/home/********/.vagrant.d/insecure_private_key
+```
+
+Uncomment and define root password
+* ansible/playbook.yml
+```
+  vars:
+    #root_password: <password>
 ```
 
 ### Deployment
@@ -87,7 +99,7 @@ Links:
 
 ## Contact
 
-If you want reach me at joaojoiapress@gmail.com.
+If you want, reach me out at joaojoiapress@gmail.com.
 
 ---
 
